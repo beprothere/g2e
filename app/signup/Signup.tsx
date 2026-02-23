@@ -534,6 +534,20 @@ export default function Signup() {
                 </div>
               </div>
 
+              <div>
+                <p className="text-sm text-left">
+                  After making the payment, please upload the payment receipt
+                  (mandatory) and provide the transaction ID (if available) to
+                  successfully complete your registration.
+                </p>
+
+                <p className="text-sm text-right pt-4">
+                  ادائیگی کرنے کے بعد براہِ کرم رسید اپ لوڈ کریں (لازمی) اور
+                  ٹرانزیکشن آئی ڈی (اگر دستیاب ہو) درج کریں تاکہ آپ کی رجسٹریشن
+                  مکمل ہو سکے۔
+                </p>
+              </div>
+
               <div className="space-y-3 w-full max-w-md">
                 <Label className="text-sm font-semibold text-gray-700">
                   Upload Payment Receipt
@@ -642,7 +656,19 @@ export default function Signup() {
 
           <Card className="glass border-accent/20 bg-accent/5 p-6">
             <p className="text-sm text-center">
-              <b>Note:</b> $20 deposit is required to activate your account.
+              <b>Note:</b> A minimum deposit of $20 is required to activate your
+              account. You may complete the payment via JazzCash or EasyPaisa.
+              After making the payment, please upload the payment receipt
+              (mandatory) and provide the transaction ID (if available) to
+              successfully complete your registration.
+            </p>
+
+            <p className="text-sm text-center">
+              <b>نوٹ:</b> آپ کے اکاؤنٹ کو فعال کرنے کے لیے کم از کم $20 جمع
+              کروانا ضروری ہے۔ آپ ادائیگی <b>JazzCash</b> یا <b>EasyPaisa</b> کے
+              ذریعے کر سکتے ہیں۔ ادائیگی کرنے کے بعد براہِ کرم رسید اپ لوڈ کریں
+              (لازمی) اور ٹرانزیکشن آئی ڈی (اگر دستیاب ہو) درج کریں تاکہ آپ کی
+              رجسٹریشن مکمل ہو سکے۔
             </p>
           </Card>
         </div>
