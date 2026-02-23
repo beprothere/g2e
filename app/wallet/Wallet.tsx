@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -72,6 +72,24 @@ export default function Wallet({
   const [transactions, setTransactions] = useState<any[]>(
     normalizeTransactions(initialData.transactions || []),
   );
+  const [showInfo, setShowInfo] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        tooltipRef.current &&
+        !tooltipRef.current.contains(event.target as Node)
+      ) {
+        setShowInfo(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const [showWithdrawModal, setShowWithdrawModal] = useState(false);
   const [showAccountModal, setShowAccountModal] = useState(false);
@@ -220,8 +238,34 @@ export default function Wallet({
           <p className="text-xs text-foreground/60">All time earnings</p>
         </Card>
 
-        <Card className="glass border-primary/20 p-6 bg-linear-to-br from-secondary/10 to-transparent">
-          <p className="text-sm text-foreground/60 mb-2">Pending</p>
+        <Card className="glass border-primary/20 p-6 bg-linear-to-br from-secondary/10 to-transparent relative">
+          <div
+            className="flex items-center justify-between gap-2 mb-2 relative"
+            ref={tooltipRef}
+          >
+            <p className="text-sm text-foreground/60">Pending</p>
+
+            <button
+              onClick={() => setShowInfo(!showInfo)}
+              className="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
+            >
+              i
+            </button>
+
+            {showInfo && (
+              <div className="absolute top-6 right-4 w-72 bg-white shadow-lg rounded-lg p-3 text-xs text-center z-50 border">
+                <p className="mb-2 font-semibold text-black">
+                  Your withdrawal will be transferred to your selected account
+                  within 7–24 hours. Kindly wait for 7–24 hours.
+                </p>
+                <p className="text-gray-700">
+                  آپ کی رقم 7 سے 24 گھنٹوں کے اندر آپ کے منتخب کردہ اکاؤنٹ میں
+                  منتقل کر دی جائے گی۔ براہِ کرم 7 سے 24 گھنٹے انتظار کریں۔
+                </p>
+              </div>
+            )}
+          </div>
+
           {isRefreshing ? (
             <Skeleton className="h-9 w-28 mb-2" />
           ) : (
@@ -229,6 +273,7 @@ export default function Wallet({
               ${(walletData?.pending ?? 0).toFixed(2)}
             </p>
           )}
+
           <p className="text-xs text-foreground/60">
             Processing (Admin approval)
           </p>
