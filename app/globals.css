@@ -1,0 +1,345 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Modern Premium Theme */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: rgb(63, 52, 203);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: rgb(31, 92, 255);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.92 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.5 0.2 145);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.96 0 0);
+  --ring: oklch(0.45 0.22 276);
+  --chart-1: oklch(0.45 0.22 276);
+  --chart-2: oklch(0.55 0.25 264);
+  --chart-3: oklch(0.5 0.2 145);
+  --chart-4: oklch(0.6 0.15 200);
+  --chart-5: oklch(0.65 0.12 180);
+  --radius: 1rem;
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.15 0 0);
+  --sidebar-primary: oklch(0.45 0.22 276);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.55 0.25 264);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.92 0 0);
+  --sidebar-ring: oklch(0.45 0.22 276);
+}
+
+.dark {
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.18 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.18 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.65 0.22 276);
+  --primary-foreground: oklch(0.12 0 0);
+  --secondary: oklch(0.6 0.25 264);
+  --secondary-foreground: oklch(0.12 0 0);
+  --accent: oklch(0.65 0.2 145);
+  --accent-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.3 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.22 0 0);
+  --ring: oklch(0.65 0.22 276);
+  --chart-1: oklch(0.65 0.22 276);
+  --chart-2: oklch(0.6 0.25 264);
+  --chart-3: oklch(0.65 0.2 145);
+  --chart-4: oklch(0.55 0.15 200);
+  --chart-5: oklch(0.5 0.12 180);
+  --sidebar: oklch(0.15 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.65 0.22 276);
+  --sidebar-primary-foreground: oklch(0.12 0 0);
+  --sidebar-accent: oklch(0.6 0.25 264);
+  --sidebar-accent-foreground: oklch(0.12 0 0);
+  --sidebar-border: oklch(0.25 0 0);
+  --sidebar-ring: oklch(0.65 0.22 276);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 dark:bg-slate-950/80 dark:border-slate-800/20;
+  }
+
+  .gradient-text {
+    @apply bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .shadow-premium {
+    @apply shadow-lg shadow-primary/5;
+  }
+}
+
+::selection {
+  @apply bg-primary/10 text-primary;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.back-to-top-btn {
+  @apply p-4 w-10 h-10 rounded-full bg-primary hover:bg-secondary transition-all duration-700 text-white fixed bottom-18 hover:cursor-pointer right-4 items-center text-center font-semibold flex z-999;
+}
+
+/* slider */
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  @apply bg-primary! hover:bg-primary/60! rounded-full w-8! h-8! text-white! p-2!;
+}
+.swiper-button-next {
+  @apply -right-1.25!;
+}
+.swiper-button-prev {
+  @apply -left-1.25!;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  @apply top-[41%]!;
+}
+/* Swiper pagination below cards */
+.testimonial-slider {
+  position: relative;
+  padding-bottom: 40px; /* space for dots */
+}
+
+.testimonial-slider .swiper-pagination {
+  position: static !important; /* 🔥 overlay khatam */
+  margin-top: 24px;
+  text-align: center;
+}
+.swiper-pagination-bullet {
+  background: #c7c5ff;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #5b5bf6;
+  width: 2rem !important;
+  height: 8px !important;
+  border-radius: 12px !important;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid var(--primary);
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 3px solid var(--primary);
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) and (min-width: 200px) {
+  .c-form-card,
+  .heding-description-contact-page,
+  .heding-description-contact-page p,
+  .c-form-card div {
+    @apply flex-col w-full;
+  }
+  .c-form-card,
+  .c-form-box {
+    @apply p-4;
+  }
+
+  /* card-profile */
+  .card-profile,
+  .dash-main-content,
+  .rewards-tier-progress-card,
+  .transaction-card {
+    @apply p-3;
+  }
+  .transaction-card h3 {
+    @apply mb-0 mt-3;
+  }
+  .trans-status-line {
+    @apply absolute top-1.5 right-4;
+  }
+  .rewards-tier-progress-card {
+    @apply p-4;
+  }
+  .ach-card-rewards-tires-page {
+    @apply p-6;
+  }
+  .tran-card-box {
+    @apply pt-6.5 shadow-lg shadow-gray-300 border border-gray-200 transition-all duration-700 ease-in-out;
+  }
+  .txt-type-trans {
+    @apply text-xs;
+  }
+  .copy-transaction-id {
+    @apply ml-2;
+  }
+  .pro-head {
+    @apply text-2xl;
+  }
+  .pro-desc {
+    @apply text-sm;
+  }
+  .refer-reward-line-of-box {
+    @apply items-start text-sm gap-1;
+  }
+  /* dash-reffer-user-card-team-card */
+  .dash-reffer-user-card-team-card {
+    @apply flex-col relative items-start shadow-md border border-gray-200;
+  }
+  .st-lin-ref {
+    @apply text-left;
+  }
+  .dash-ref-card-user-level {
+    @apply absolute top-4 right-4;
+  }
+  .sign-up-card,
+  .login-form-card {
+    @apply p-5;
+  }
+  .login-form-card {
+    @apply pt-10;
+  }
+  .sign-up-card {
+    @apply pt-8;
+  }
+  .team-tabel td {
+    @apply min-w-22.5;
+  }
+  .refer-reward-dash-verfied-refeerer-line {
+    @apply items-start;
+  }
+  .earn-and-staus-line-dash-reffer {
+    @apply flex items-center flex-row-reverse justify-between w-full gap-2 mt-5;
+  }
+  .recent-dah-referal-card {
+    @apply p-3.5;
+  }
+  .referral-earning-box {
+    @apply absolute -bottom-12 right-0;
+  }
+  .mid-section-rewards-tiers,
+  .mid-box-section-acivements {
+    @apply px-1;
+  }
+}
+.sign-up-card .input,
+.card-profile .input,
+.contact-form .input,
+.search .input {
+  @apply h-11;
+}
+.edit-avatar-icon {
+  @apply absolute bottom-2 -right-0.5 bg-white rounded-full p-1;
+}
+.team-tabel tr {
+  @apply h-15;
+}
+.tran-card-box {
+  @apply hover:shadow-lg shadow-gray-300 border border-gray-200 transition-all duration-400 ease-in-out;
+}
+.pend-loader-login-2fa-accept {
+  @apply fixed top-0 left-0 flex flex-col items-center justify-center w-full h-screen bg-black/40;
+}
+.login-form label {
+  @apply mb-4;
+}
+
+.user-filters-date-satus-box div button {
+  @apply w-full!;
+}
+.edit-user-model-card::-webkit-scrollbar {
+  @apply w-0;
+}
