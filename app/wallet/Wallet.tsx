@@ -10,6 +10,7 @@ import {
   X,
   CreditCard,
   ChevronDown,
+  Info,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
 import TransactionHistory from "@/components/TransactionHistory";
@@ -236,9 +237,11 @@ export default function Wallet({
         <Card className="glass border-primary/20 p-6 bg-linear-to-br from-accent/10 to-transparent">
           <span className="relative">
             <p className="text-sm text-foreground/60 mb-2">
-            Available to Withdraw
-          </p>
-        <p className="text-xs text-forground absolute top-1 right-2">Min Withdraw: $10</p>
+              Available to Withdraw
+            </p>
+            <p className="text-xs text-forground absolute top-1 right-2">
+              Min Withdraw: $10
+            </p>
           </span>
           {isRefreshing ? (
             <Skeleton className="h-9 w-28 mb-2" />
@@ -343,7 +346,6 @@ export default function Wallet({
 
       <TransactionHistory initialData={transactions} />
 
-      {/* Confirmation Modal */}
       {confirmRemoveId && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-background p-6 rounded-xl w-full max-w-sm space-y-4">
@@ -364,11 +366,9 @@ export default function Wallet({
         </div>
       )}
 
-
       {showWithdrawModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-end sm:items-center justify-center z-100 sm:px-4 transition-all px-4">
           <div className="bg-background w-full max-w-md rounded-xl sm:rounded-2xl shadow-2xl border border-primary/10 overflow-hidden animate-in slide-in-from-bottom duration-300 mb-40 sm:mb-0">
-            {/* Modal Header */}
             <div className="flex items-center justify-between p-4 border-b border-border">
               <h3 className="text-lg font-bold flex items-center gap-2">
                 <Download className="text-accent" size={18} /> Withdraw Funds
@@ -382,13 +382,13 @@ export default function Wallet({
             </div>
 
             <div className="p-6 space-y-5 pb-10 sm:pb-6">
-              {" "}
-              {/* Padding bottom barhai hai */}
-              {/* Amount Input Group */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground/70 ml-1">
-                  Enter Amount
-                </label>
+                <span className="flex w-full items-center justify-between gap-2 pb-1">
+                  <label className="text-sm font-medium text-foreground/70 ml-1">
+                    Enter Amount
+                  </label>
+                  <p className="text-foreground/60 text-xs">Minimum: $10</p>
+                </span>
                 <div className="flex gap-2">
                   <div className="relative flex-1 group">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl font-semibold text-foreground/40 group-focus-within:text-primary transition">
@@ -419,7 +419,6 @@ export default function Wallet({
                   </span>
                 </p>
               </div>
-              {/* Account Selection */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground/70 ml-1">
                   Select Destination
@@ -437,14 +436,12 @@ export default function Wallet({
                       </option>
                     ))}
                   </select>
-                  {/* Custom arrow for select */}
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-foreground/50">
                     <ChevronDown size={18} />
                   </div>
                 </div>
               </div>
-              {/* Action Buttons */}
-              <div className="pt-2 space-y-3">
+              <div className="py-2 space-y-3">
                 <Button
                   className="w-full py-7 text-lg font-bold bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-600/20 active:scale-[0.97] transition-all"
                   onClick={submitWithdraw}
@@ -459,6 +456,14 @@ export default function Wallet({
                   Cancel & Go Back
                 </Button>
               </div>
+              <span className="flex items-start gap-2 text-xs text-foreground/60">
+                <Info size={52} className="text-foreground/60" />
+                <p className="pt-2">
+                  Your withdrawal will be credited to your selected account
+                  within 7–24 hours. Please wait for 7–24 hours. You will be
+                  notified once the transfer is complete.
+                </p>
+              </span>
             </div>
           </div>
         </div>
